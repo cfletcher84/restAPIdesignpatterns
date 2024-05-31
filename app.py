@@ -15,6 +15,7 @@ from routes.employeeBP import employee_blueprint
 from routes.orderBP import order_blueprint
 from routes.productBP import product_blueprint
 from routes.productionBP import production_blueprint
+from routes.tokenBP import token_blueprint
 
 SWAGGER_URL = '/api/docs'
 API_URL = '/static/swagger.yaml'
@@ -46,6 +47,7 @@ def blueprint_config(app):
     app.register_blueprint(product_blueprint, url_prefix='/products')
     app.register_blueprint(production_blueprint, url_prefix='/production')
     app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+    app.register_blueprint(token_blueprint, url_prefix='/token')
 
 def config_rate_limit():
     limiter.limit("100 per day")(customer_blueprint)
